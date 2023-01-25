@@ -19,7 +19,6 @@ class Car_price_pridictor(Resource):
 
     def post(self):
         data = request.json
-        print(data)
         try:
             seats_n = int(data["seats"])
             
@@ -40,7 +39,6 @@ class Car_price_pridictor(Resource):
             ar = ar.reshape(1,11)
             
             prediction = pipe.predict(ar)
-            print(prediction)
             
             return  jsonify({'prediction' : prediction[0]})
 
@@ -53,7 +51,7 @@ class Car_price_pridictor(Resource):
 api.add_resource(Car_price_pridictor,"/CarPricePridictor/")
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run()
 
 # dataset = {
 #  "brand": "Datsun",
